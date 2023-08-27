@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en"
+	xmlns:th="http://thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz.thymeleaf/layout">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+     <link type="text/css" rel="stylesheet" href="materialize/css/materialize.min.css"  media="screen,projection"/>
+     <link rel="stylesheet" href ="style/styleCss.css"/>
+    <title>Livros Cadastrados</title>
+</head>
+<body class="body">
+    
+    <header>
+		<nav class="nav">
+			<div class="nav-wrapper">
+				<a href="#" class="brand-logo">Gráfica MainBooks - Listagem de Livros</a> 
+				<ul id="nav-mobile" class="right hide-on-med-and-down"></ul>
+			</div>
+	 	 </nav>
+	</header>
+    
+    <div class="container">
+    	<h3><a href="/cadastrarLivro" class="waves-effect waves-light btn"><i class="material-icons right">add</i>Cadastrar</a></h3>
+	</div>
+	
+	<table class="container">
+		<thead>
+			<tr>
+				<th>ID</th>
+				<th>TÍTULO</th>
+				<th>AUTOR</th>
+				<th>EDITORA</th>
+				<th>ANO</th>
+				<th>ISBN</th>
+				<th>ATUALIZAÇÕES</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr th:each="livro : ${livros}">
+				<td><span th:text="${livro.codigo}"></span></td>
+				<td><span th:text="${livro.titulo}"></span></td>
+				<td><span th:text="${livro.autor}"></span></td>
+				<td><span th:text="${livro.editora}"></span></td>
+				<td><span th:text="${livro.ano}"></span></td>
+				<td><span th:text="${livro.isbn}"></span></td>
+				<td>
+					<a class="waves-effect waves-light btn-small" th:href="${(#mvc.url('LC#editarLivro').arg(0, livro.codigo)).build()}"><i class="material-icons">edit</i></a>
+					<a class="waves-effect waves-light btn-small" th:href="${(#mvc.url('LC#deletarLivro').arg(0, livro.codigo)).build()}"><i class="material-icons">delete_forever</i></a>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+
+	 <script type="text/javascript" src="materialize/js/materialize.min.js"></script>
+</body>
+</html>

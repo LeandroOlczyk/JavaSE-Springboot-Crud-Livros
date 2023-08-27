@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en"
+	xmlns:th="http://thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz.thymeleaf/layout">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link type="text/css" rel="stylesheet" href="materialize/css/materialize.min.css"  media="screen,projection"/>
+    <link rel="stylesheet" href="style/styleCss.css"/>
+    <title>Editar Livro</title>
+</head>
+<body class="body">
+    
+    <header>
+		<nav class="nav">
+			<div class="nav-wrapper">
+				<a href="#" class="brand-logo">Gráfica MainBooks - Editar Livro</a>
+				<ul id="nav-mobile" class="right hide-on-med-and-down"></ul>
+			</div>
+		</nav>
+	</header>
+    
+    <div class="container">
+    	<h3><a href="/livros" class="waves-effect waves-light btn"><i class="material-icons right">toc</i>Exibir Lista</a></h3>
+    </div>
+    
+    <form class="container" th:object="${livro}" th:action="@{/atualizarLivro}" method="post">
+    	<div class="row">
+    		<div>
+    			<input type="hidden" th:field="*{codigo}"/>
+    		</div>
+    		<div class="input-field col s6">	
+    			<input type="text" th:field="*{titulo}" required/>
+    			<label for="titulo">Titulo</label>
+    		</div>
+    		<div class="input-field col s6">
+    			<input type="text" th:field="*{autor}" required/>
+    			<label for="autor">Autor</label>
+    		</div>
+       		<div class="input-field col s6">
+    			<input type="text" th:field="*{editora}" required/>
+    			<label for="editora">Editora</label>
+    		</div>
+    		<div class="input-field col s3">
+    			<input type="number" th:field="*{ano}" min="1900" max="2099" required/>
+    			<label for="ano">Ano</label>
+    		</div>
+    		<div class="input-field col s3">
+    			<input type="number" th:field="*{isbn}" required/>
+    			<label for="isbn">ISBN</label>
+    		</div>
+    	</div>
+    
+    	<th:block th:include="cadastroLivro/mensagemValidacao"></th:block>
+    	
+    	<button class="waves-effect waves-light btn" type="submit"><i class="material-icons right">send</i>Atualizar</button>
+    	<a href="/livros" class="waves-effect waves-light btn"><i class="material-icons right">not_interested</i>Cancelar</a>
+	</form>
+
+	<script type="text/javascript" src="materialize/js/materialize.min.js"></script>
+</body>
+</html>
