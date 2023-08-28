@@ -10,6 +10,6 @@ Para executar esse projeto, estou utilizando a IDE do Eclipse e um banco de dado
 
 <p>
 <p>
-⚠️ #OBS: 
+⚠️ #OBS: <p>
 O arquivo <b>application.properties</b> está localizado no diretório <i>src > main > resources</i>.<p>
 O arquivo <b>DataConfiguration.java</b></b> está localizado no diretório <i>src > main > java > com > gestao > livros<i/>.
